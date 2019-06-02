@@ -1,6 +1,7 @@
-#ifndef ZSJ_H
-#define ZSJ_H 1
+#ifndef DATAMAKER_H
+#define DATAMAKER_H 1
 #include<fstream>
+#include<ctime>
 namespace std
 {
 	ifstream fin;
@@ -55,7 +56,8 @@ namespace std
 	{
 		return fscanf(fr,format,argument...);
 	}
-	template<int n,int m,int wh,typename T>
+	#define MAX_GRAPH_N 10001
+	template<typename T,int wh>
 	struct graph{
 		struct edge1{
 			int u,v;
@@ -66,24 +68,25 @@ namespace std
 			T w;
 		};
 		#if wh==1
-		T e[n][n];
+		T vector<vector<int>> e;
 		bool add(int u,int v,T w)
 		{
-			if(u>n||v>n||u<0||v<0) return false;
+			if(u>MAX_GRAPH_N||v>MAX_GRAPH_N||u<0||v<0) return false;
 			e[u][v]=w;
 			return true;
 		}
 		#endif
 		#if wh==2
-		edge2 e[m];
-		int head[n],p;
+		vector<edge2> e;
+		long long head[n];
 		bool add(int u,int v,T w)
 		{
 			if(u>n||v>n||u<0||v<0) return false;
-			e[++p].v=v;
-			e[p].w=w;
-			e[p].next=head[u];
-			head[u]=p;
+			edge2 c;
+			c.v=v;
+			c.w=w;
+			c.next=head[u];
+			head[u]=c.size();
 			return true;
 		}
 		#endif
@@ -92,6 +95,7 @@ namespace std
 		bool add(int u,int v,T w)
 		{
 			if(u>n||v>n||u<0||v<0) return false;
+			edge a;
 			e[++p].u=u;
 			e[p].v=v;
 			e[p].w=w;
@@ -101,15 +105,23 @@ namespace std
 	};
 	long long randll()
 	{
-		
+		srand(unsigned(time(NULL)));
+		long long t=0,times=rand()%10;
+		for(int i=1;i<=times;i++)
+		{
+			t=t*rand()+rand();
+		}
+		return t;
 	}
-	long long rand_l_r()
+	long long rand_l_r(long long l,long long r)
 	{
-		
+		return randll()%(l-r+1)+l;
 	}
-	graph rand_graph(int n,int m,bool yw)
+	template<typename T>
+	auto rand_graph(int n,int m,int wh,bool yw)->decltype(graph)
 	{
-		
+		graph<T,wh> g; 
+		return g;
 	}
 }
 #endif
