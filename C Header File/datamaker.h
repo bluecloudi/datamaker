@@ -2,6 +2,7 @@
 #define DATAMAKER_H 1
 #include<fstream>
 #include<ctime>
+#include<vector>
 namespace std
 {
 	ifstream fin;
@@ -57,7 +58,7 @@ namespace std
 		return fscanf(fr,format,argument...);
 	}
 	#define MAX_GRAPH_N 10001
-	template<typename T,int wh>
+	template<typename T,typename T2,int wh>
 	struct graph{
 		struct edge1{
 			int u,v;
@@ -91,7 +92,7 @@ namespace std
 		}
 		#endif
 		#if wh==3
-		edge1 e[m],p;
+		edge1 e[m];
 		bool add(int u,int v,T w)
 		{
 			if(u>n||v>n||u<0||v<0) return false;
@@ -102,10 +103,11 @@ namespace std
 			return true;
 		}
 		#endif
+		vector<T2> v;
 	};
 	long long randll()
 	{
-		srand(unsigned(time(NULL)));
+		srand(time(NULL));
 		long long t=0,times=rand()%10;
 		for(int i=1;i<=times;i++)
 		{
@@ -117,10 +119,14 @@ namespace std
 	{
 		return randll()%(l-r+1)+l;
 	}
-	template<typename T>
+	template<typename T1,typename T2>
 	auto rand_graph(int n,int m,int wh,bool yw)->decltype(graph)
 	{
-		graph<T,wh> g; 
+		graph<T1,T2,wh> g; 
+		for(int i=1;i<=n;i++)
+		{
+			
+		}
 		return g;
 	}
 }
