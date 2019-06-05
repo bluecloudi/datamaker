@@ -123,9 +123,16 @@ namespace std
 	auto rand_graph(int n,int m,int wh,bool yw)->decltype(graph)
 	{
 		graph<T1,T2,wh> g; 
+		auto a=std::forward_as_tuple(T2(Args...));
 		for(int i=1;i<=n;i++)
 		{
-			
+			for_each(a,[](auto x)
+		    {
+		        if(typeid(x).name()=="long long")
+		        {
+		        	
+			}
+		    });
 		}
 		return g;
 	}
