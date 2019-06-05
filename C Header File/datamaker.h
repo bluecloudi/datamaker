@@ -15,7 +15,7 @@ namespace std
 			fin.open(name,ios::in);
 			
 			return fr=fopen(name,"r");
-		 } 
+		} 
 		if(c=='w')
 		{
 			fout.open(name,ios::out);
@@ -27,6 +27,7 @@ namespace std
 		    fout.open(name,ios::out);
 		    return fr=fopen(name,"r"),fw=fopen(name,"w");
 		}
+		else return nullptr;
 	}
 	int __cdecl filec(char *name,char c)
 	{
@@ -46,31 +47,22 @@ namespace std
 			fout.close();
 			return fclose(fr),fclose(fw);
 		}
-	}
-	template<typename ...Args>
-	int __cdecl fprint(const char *format,Args... argument)
-	{
-		return fprintf(fw,format,argument...);
-	}
-	template<typename ...Args>
-	int __cdecl fscan(const char *format,Args&... argument)
-	{
-		return fscanf(fr,format,argument...);
+		else return 0;
 	}
 	#define MAX_GRAPH_N 10001
-	template<typename T,typename T2,int wh>
+	template<typename T1,typename T2,int wh>
 	struct graph{
 		struct edge1{
 			int u,v;
-			T w;
+			T1 w;
 		};
 		struct edge2{
 			int next,v;
-			T w;
+			T1 w;
 		};
 		#if wh==1
-		T vector<vector<int>> e;
-		bool add(int u,int v,T w)
+		T1 vector<vector<int>> e;
+		bool add(int u,int v,T1 w)
 		{
 			if(u>MAX_GRAPH_N||v>MAX_GRAPH_N||u<0||v<0) return false;
 			e[u][v]=w;
@@ -80,7 +72,7 @@ namespace std
 		#if wh==2
 		vector<edge2> e;
 		long long head[n];
-		bool add(int u,int v,T w)
+		bool add(int u,int v,T1 w)
 		{
 			if(u>n||v>n||u<0||v<0) return false;
 			edge2 c;
@@ -93,7 +85,7 @@ namespace std
 		#endif
 		#if wh==3
 		edge1 e[m];
-		bool add(int u,int v,T w)
+		bool add(int u,int v,T1 w)
 		{
 			if(u>n||v>n||u<0||v<0) return false;
 			edge a;
@@ -130,11 +122,26 @@ namespace std
 		    {
 		        if(typeid(x).name()=="long long")
 		        {
-		        	
-			}
+		        	x=randll();
+				}
 		    });
 		}
 		return g;
+	}
+	template<typename T1,typename T2,int wh>
+	int fprint(graph<T1,T2,wh> g) 
+	{
+		return 1;
+	} 
+	template<typename ...Args>
+	int __cdecl fprint(const char *format,Args... argument)
+	{
+		return fprintf(fw,format,argument...);
+	}
+	template<typename ...Args>
+	int __cdecl fscan(const char *format,Args&... argument)
+	{
+		return fscanf(fr,format,argument...);
 	}
 }
 #endif
