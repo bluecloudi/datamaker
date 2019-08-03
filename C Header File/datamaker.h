@@ -7,10 +7,10 @@
 #include<map>
 namespace std
 {
-	ifstream fin;//文件输入流 
-	ofstream fout;// 文件输出流
-	FILE *fr,*fw;// 文件指针 
-	FILE *__cdecl fileo(char *name,char c)//打开文件 
+	ifstream fin;
+	ofstream fout;
+	FILE *fr,*fw; 
+	FILE *__cdecl fileo(char *name,char c)
 	{
 		if(c=='r')
 		{
@@ -31,7 +31,7 @@ namespace std
 		}
 		else return nullptr;
 	}
-	int __cdecl filec(char *name,char c)//关闭文件
+	int __cdecl filec(char *name,char c)
 	{
 		if(c=='r')
 		{
@@ -52,7 +52,7 @@ namespace std
 		else return 0;
 	}
 	template<typename T1,typename T2>
-	struct graph{//图 
+	struct graph{
 		vector<T1> v;
 		struct edge1{
 			int u,v;
@@ -74,7 +74,7 @@ namespace std
 			
 		}
 	};
-	long long randll()//Rand long long 
+	long long randll()
 	{
 		srand(time(NULL));
 		long long t=0,times=rand()%10;
@@ -118,18 +118,18 @@ namespace std
 		return g;
 	}
 	template<typename T1,typename T2>
-	int fprintg(graph<T1,T2> g) //输出图 
+	int fprintg(graph<T1,T2> g) 
 	{
 		
 		return 1;
 	} 
 	template<typename ...Args>
-	int __cdecl fprint(const char *format,Args... argument)//printf 文件输出 
+	int __cdecl fprint(const char *format,Args... argument)
 	{
 		return fprintf(fw,format,argument...);
 	}
 	template<typename ...Args>
-	int __cdecl fscan(const char *format,Args&... argument)//scanf 文件输入 
+	int __cdecl fscan(const char *format,Args&... argument)
 	{
 		return fscanf(fr,format,argument...);
 	}
