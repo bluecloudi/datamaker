@@ -84,44 +84,9 @@ namespace std
 		}
 		return t;
 	}
-	long long rand_l_r(long long l,long long r)//Rand l~r 
+	long long rand_l_r(long long l,long long r)
 	{
 		return randll()%(l-r+1)+l;
-	}
-	template<typename T1,typename T2,typename ...Args>
-	auto rand_graph(int n,int m,bool yw)->decltype(graph)
-	{
-		graph<T1,T2> g; 
-		if(typeid(T1)==typeid(long long))
-		{
-			
-		}
-		if(typeid(T1)==typeid(double))
-		{
-			
-		}
-		auto a=forward_as_tuple(T1(Args...));
-		for(int i=1;i<=n;i++)
-		{
-			for_each(a,[](auto x)
-		    {
-		        if(typeid(x)==typeid(long long))
-		        {
-		        	x=randll();
-				}
-				if(typeid(x)==typeid(double))
-				{
-					
-				}
-		    });
-		}
-		return g;
-	}
-	template<typename T1,typename T2>
-	int fprintg(graph<T1,T2> g) 
-	{
-		
-		return 1;
 	} 
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
