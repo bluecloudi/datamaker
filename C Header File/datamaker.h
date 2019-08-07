@@ -69,15 +69,21 @@ namespace std
 			e.push_back(p);
 			return true;
 		}
-		graph()
-		{
-			
-		}
 	};
-	long long randll()
+	int brand()
 	{
 		srand(time(NULL));
-		long long t=0,times=rand()%10;
+		int t=0,times=(rand()-1)%5+1;
+		for(int i=1;i<=times;i++)
+		{
+			t=t*rand()+rand();
+		}
+		return t;
+	}
+	long long brand()
+	{
+		srand(time(NULL));
+		long long t=0,times=(rand()-1)%10+1;
 		for(int i=1;i<=times;i++)
 		{
 			t=t*rand()+rand();
