@@ -70,29 +70,29 @@ namespace std
 			return true;
 		}
 	};
-	int brand()
+	void brand(int &t)
 	{
 		srand(time(NULL));
-		int t=0,times=(rand()-1)%5+1;
+		int times=(rand()-1)%5+1;
 		for(int i=1;i<=times;i++)
 		{
 			t=t*rand()+rand();
 		}
-		return t;
 	}
-	long long brand()
+	void brand(long long &t)
 	{
 		srand(time(NULL));
-		long long t=0,times=(rand()-1)%10+1;
+		long long times=(rand()-1)%10+1;
 		for(int i=1;i<=times;i++)
 		{
 			t=t*rand()+rand();
 		}
-		return t;
 	}
-	long long rand_l_r(long long l,long long r)
+	long long brand_l_r(long long l,long long r)
 	{
-		return randll()%(l-r+1)+l;
+		long long t;
+		brand(t);
+		return t%(l-r+1)+l;
 	} 
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
