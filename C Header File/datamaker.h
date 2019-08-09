@@ -51,6 +51,7 @@ namespace std
 		}
 		else return 0;
 	}
+	#ifndef GRAPH
 	template<typename T1,typename T2>
 	struct graph{
 		vector<T1> v;
@@ -70,6 +71,7 @@ namespace std
 			return true;
 		}
 	};
+	#endif
 	void brand(int &t)
 	{
 		srand(time(NULL));
@@ -93,12 +95,13 @@ namespace std
 		brand(int(t));
 		t%=128;
 	}
-	void brand(char *c,int len)
+	template<typename T>
+	void brand(T& t[],int len)
 	{
 		if(len==0) len=brand(len);
 		for(int i=0;i<len;i++)
 		{
-			brand(*(c+i));
+			brand(t[i]);
 		}
 	}
 	void brand(string &s,long long len)
