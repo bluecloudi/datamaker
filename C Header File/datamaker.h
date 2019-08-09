@@ -88,9 +88,33 @@ namespace std
 			t=t*rand()+rand();
 		}
 	}
-	long long brand_l_r(long long l,long long r)
+	void brand(char &t)
 	{
-		long long t;
+		brand(int(t));
+		t%=128;
+	}
+	void brand(char *c,int len)
+	{
+		if(len==0) len=brand(len);
+		for(int i=0;i<len;i++)
+		{
+			brand(*(c+i));
+		}
+	}
+	void brand(string &s,long long len)
+	{
+		if(len==0) len=brand(len);
+		char c;
+		for(int i=0;i<len;i++)
+		{
+			brand(c);
+			s.push_back(c);
+		}
+	}
+	template<typename T>
+	T brand_l_r(const T &l,const T &r)
+	{
+		T t;
 		brand(t);
 		return t%(l-r+1)+l;
 	} 
