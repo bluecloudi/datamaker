@@ -31,7 +31,7 @@ namespace std
 		}
 		else return nullptr;
 	}
-	int __cdecl filec(char *name,char c)
+	int __cdecl filec(char c)
 	{
 		if(c=='r')
 		{
