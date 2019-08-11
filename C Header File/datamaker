@@ -92,21 +92,22 @@ namespace std
 	}
 	void brand(char &t)
 	{
-		brand(int(t));
-		t%=128;
+		int t1; 
+		brand(t1);
+		t=t1%128;
 	}
 	template<typename T>
-	void brand(T& t[],int len)
+	void brand(T *t,int &len)
 	{
-		if(len==0) len=brand(len);
+		if(len==0) brand(len);
 		for(int i=0;i<len;i++)
 		{
-			brand(t[i]);
+			brand(*(t+i));
 		}
 	}
-	void brand(string &s,long long len)
+	void brand(string &s,long long &len)
 	{
-		if(len==0) len=brand(len);
+		if(len==0) brand(len);
 		char c;
 		for(int i=0;i<len;i++)
 		{
