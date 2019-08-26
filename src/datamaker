@@ -9,20 +9,20 @@ namespace std
 {
 	ifstream fin;
 	ofstream fout;
-	FILE *fr,*fw; 
+	FILE *fr,*fw;
 	FILE *__cdecl fileo(char *name,char c)
 	{
 		if(c=='r')
 		{
 			fin.open(name,ios::in);
-			
+
 			return fr=fopen(name,"r");
-		} 
+		}
 		if(c=='w')
 		{
 			fout.open(name,ios::out);
 			return fw=fopen(name,"w");
-		} 
+		}
 		if(c=='a')
 		{
 			fin.open(name,ios::in);
@@ -37,12 +37,12 @@ namespace std
 		{
 			fin.close();
 			return fclose(fr);
-		} 
+		}
 		if(c=='w')
 		{
 			fout.close();
 			return fclose(fw);
-		} 
+		}
 		if(c=='a')
 		{
 			fin.close();
@@ -92,7 +92,7 @@ namespace std
 	}
 	void brand(char &t)
 	{
-		int t1; 
+		int t1;
 		brand(t1);
 		t=t1%128;
 	}
@@ -116,12 +116,29 @@ namespace std
 		}
 	}
 	template<typename T>
+	void brand(vector<T> &t)
+	{
+		int len;
+		brand(len);
+		for(int i=1;i<=len;i++)
+		{
+			T p;
+			brand(p);
+			t.push_back(p);
+		}
+	}
+	template<typename T>
 	T brand_l_r(const T &l,const T &r)
 	{
 		T t;
 		brand(t);
 		return t%(l-r+1)+l;
-	} 
+	}
+	template<typename T1,typename T2>
+	void brand(graph<T1,T2> &g)
+	{
+
+	}
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
 	{
