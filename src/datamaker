@@ -1,5 +1,5 @@
-#ifndef DATAMAKER_H
-#define DATAMAKER_H 1
+#ifndef DATAMAKER
+#define DATAMAKER 1
 #include<fstream>
 #include<ctime>
 #include<vector>
@@ -138,6 +138,20 @@ namespace std
 	void brand(graph<T1,T2> &g)
 	{
 			T1 t;
+			T2 w;
+			int i,len;
+			brand(len);
+			for(i=1;i<=len;i++)
+			{
+				brand(t);
+				g.v.push_back(t);
+			}
+			brand(len);
+			for(i=1;i<=len;i++)
+			{
+				brand(w);
+				g.v.push_back(w);
+			}
 	}
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
