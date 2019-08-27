@@ -52,6 +52,7 @@ namespace std
 		else return 0;
 	}
 	#ifndef GRAPH
+	#define GRAPH
 	template<typename T1,typename T2>
 	struct graph{
 		vector<T1> v;
@@ -69,6 +70,10 @@ namespace std
 			p.w=w;
 			e.push_back(p);
 			return true;
+		}
+		friend operator <<(ostream& out,const graph &g)
+		{
+
 		}
 	};
 	#endif
@@ -153,6 +158,19 @@ namespace std
 				g.v.push_back(w);
 			}
 	}
+	#ifndef TREE
+	#define TREE
+	template<typename ndata>
+	struct tree{
+		struct node{
+			ndata w;
+			vector<node*> child;
+			node *fa;
+		};
+		vector<node> v;
+	};
+
+	#endif
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
 	{
