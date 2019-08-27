@@ -59,6 +59,11 @@ namespace std
 		struct edge1{
 			int u,v;
 			T2 w;
+			friend ostream& operator <<(ostream& out,const edge1 &e)
+			{
+					out<<e.u<<" "<<e.v<<" "<<e.w;
+					return out;
+			}
 		};
 		vector<edge1> e;
 		bool add(int u,int v,T2 w)
@@ -71,9 +76,17 @@ namespace std
 			e.push_back(p);
 			return true;
 		}
-		friend operator <<(ostream& out,const graph &g)
+		friend ostream& operator <<(ostream& out,const graph &g)
 		{
-
+				for(auto i:g.v)
+				{
+					out<<i;
+				}
+				for(auto i:g.w)
+				{
+					out<<i;
+				}
+				return out;
 		}
 	};
 	#endif
@@ -169,7 +182,7 @@ namespace std
 		};
 		vector<node> v;
 	};
-
+	
 	#endif
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
