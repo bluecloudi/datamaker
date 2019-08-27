@@ -137,7 +137,7 @@ namespace std
 	template<typename T1,typename T2>
 	void brand(graph<T1,T2> &g)
 	{
-
+			T1 t;
 	}
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
