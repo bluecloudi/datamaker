@@ -1,5 +1,5 @@
 #ifndef DATAMAKER
-#define DATAMAKER 1
+#define DATAMAKER
 #include<fstream>
 #include<ctime>
 #include<vector>
@@ -182,7 +182,7 @@ namespace std
 		};
 		vector<node> v;
 	};
-	
+
 	#endif
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
