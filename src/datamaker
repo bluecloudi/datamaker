@@ -51,45 +51,6 @@ namespace std
 		}
 		else return 0;
 	}
-	#ifndef GRAPH
-	#define GRAPH
-	template<typename T1,typename T2>
-	struct graph{
-		vector<T1> v;
-		struct edge1{
-			int u,v;
-			T2 w;
-			friend ostream& operator <<(ostream& out,const edge1 &e)
-			{
-					out<<e.u<<" "<<e.v<<" "<<e.w;
-					return out;
-			}
-		};
-		vector<edge1> e;
-		bool add(int u,int v,T2 w)
-		{
-			if(u<0||v<0) return false;
-			edge1 p;
-			p.u=u;
-			p.v=v;
-			p.w=w;
-			e.push_back(p);
-			return true;
-		}
-		friend ostream& operator <<(ostream& out,const graph &g)
-		{
-				for(auto i:g.v)
-				{
-					out<<i;
-				}
-				for(auto i:g.w)
-				{
-					out<<i;
-				}
-				return out;
-		}
-	};
-	#endif
 	void brand(int &t)
 	{
 		srand(time(NULL));
@@ -152,6 +113,44 @@ namespace std
 		brand(t);
 		return t%(l-r+1)+l;
 	}
+	#ifndef GRAPH
+	#define GRAPH
+	template<typename T1,typename T2>
+	struct graph{
+		vector<T1> v;
+		struct edge1{
+			int u,v;
+			T2 w;
+			friend ostream& operator <<(ostream& out,const edge1 &e)
+			{
+					out<<e.u<<" "<<e.v<<" "<<e.w;
+					return out;
+			}
+		};
+		vector<edge1> e;
+		bool add(int u,int v,T2 w)
+		{
+			if(u<0||v<0) return false;
+			edge1 p;
+			p.u=u;
+			p.v=v;
+			p.w=w;
+			e.push_back(p);
+			return true;
+		}
+		friend ostream& operator <<(ostream& out,const graph &g)
+		{
+				for(auto i:g.v)
+				{
+					out<<i;
+				}
+				for(auto i:g.w)
+				{
+					out<<i;
+				}
+				return out;
+		}
+	};
 	template<typename T1,typename T2>
 	void brand(graph<T1,T2> &g)
 	{
@@ -171,6 +170,7 @@ namespace std
 				g.v.push_back(w);
 			}
 	}
+	#endif
 	#ifndef TREE
 	#define TREE
 	template<typename ndata>
@@ -179,10 +179,30 @@ namespace std
 			ndata w;
 			vector<node*> child;
 			node *fa;
+			int number;
+			friend ostream& operator <<(ostream& out,const node &t)
+			{
+				out<<t.number<<endl;
+				out<<t.w;
+				for(auto i:t.child)
+				{
+					out<<*i;
+				}
+				return out;
+			}
 		};
 		vector<node> v;
+		friend ostream& operator <<(ostream& out,const tree &t)
+		{
+			out<<t.v[1];
+			return out;
+		}
 	};
+	template<typename T1>
+	void brand(tree<T1> &t)
+	{
 
+	}
 	#endif
 	template<typename ...Args>
 	int __cdecl fprint(const char *format,Args... argument)
