@@ -14,19 +14,19 @@ namespace std
 	{
 		if(c=='r')
 		{
-			fin.open(name,ios::in);
+			fin.open(name,ios::in|ios::trunc);
 
 			return fr=fopen(name,"r");
 		}
 		if(c=='w')
 		{
-			fout.open(name,ios::out);
+			fout.open(name,ios::out|ios::trunc);
 			return fw=fopen(name,"w");
 		}
 		if(c=='a')
 		{
-			fin.open(name,ios::in);
-		    fout.open(name,ios::out);
+			fin.open(name,ios::in|ios::trunc);
+		    fout.open(name,ios::out|ios::trunc);
 		    return fr=fopen(name,"r"),fw=fopen(name,"w");
 		}
 		else return nullptr;
